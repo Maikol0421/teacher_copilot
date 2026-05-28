@@ -214,7 +214,7 @@ export default function NewActivityView() {
     <div className="space-y-6 max-w-4xl mx-auto">
       <PageHeader
         title="Nueva actividad"
-        description="La actividad se atar? a un grupo, materia y criterio del periodo activo."
+        description="La actividad se atará a un grupo, materia y criterio del periodo activo."
       />
 
       <form onSubmit={handleSubmit} className="space-y-6">
