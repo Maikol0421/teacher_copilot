@@ -28,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body className="font-sans">
         <ThemeProvider
           attribute="class"

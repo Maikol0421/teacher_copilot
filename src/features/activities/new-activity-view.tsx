@@ -43,35 +43,35 @@ const ACTIVITY_TYPES: Array<{
   {
     value: "tarea",
     label: "Tarea",
-    description: "Trabajo en casa o asignaci?n corta.",
+    description: "Trabajo en casa o asignación corta.",
     icon: ClipboardCheck,
     color: "bg-blue-500/10 text-blue-600 border-blue-200 dark:border-blue-500/30",
   },
   {
     value: "examen",
     label: "Examen",
-    description: "Evaluaci?n escrita o digital.",
+    description: "Evaluación escrita o digital.",
     icon: GraduationCap,
     color: "bg-violet-500/10 text-violet-600 border-violet-200 dark:border-violet-500/30",
   },
   {
     value: "trabajo",
     label: "Trabajo",
-    description: "Proyecto o investigaci?n.",
+    description: "Proyecto o investigación.",
     icon: BookOpenText,
     color: "bg-emerald-500/10 text-emerald-600 border-emerald-200 dark:border-emerald-500/30",
   },
   {
     value: "participacion",
-    label: "Participaci?n",
+    label: "Participación",
     description: "Intervenciones y aportes en clase.",
     icon: MessageSquareText,
     color: "bg-amber-500/10 text-amber-600 border-amber-200 dark:border-amber-500/30",
   },
   {
     value: "exposicion",
-    label: "Exposici?n",
-    description: "Presentaci?n oral o demostraci?n.",
+    label: "Exposición",
+    description: "Presentación oral o demostración.",
     icon: Presentation,
     color: "bg-rose-500/10 text-rose-600 border-rose-200 dark:border-rose-500/30",
   },
@@ -95,7 +95,7 @@ export default function NewActivityView() {
     );
   }, [activeYear, groups, subjects, periods]);
 
-  // Autoselecci?n de grupo si solo hay 1
+  // Autoselección de grupo si solo hay 1
   const initialGroup =
     searchParams.get("group") ??
     (eligibleGroups.length === 1 ? eligibleGroups[0].id : "");
@@ -298,7 +298,7 @@ export default function NewActivityView() {
                 </Select>
                 {eligibleGroups.length === 1 && (
                   <p className="text-[10px] text-muted-foreground">
-                    Autoseleccionado (?nico grupo configurado).
+                    Autoseleccionado (único grupo configurado).
                   </p>
                 )}
               </div>
@@ -333,7 +333,7 @@ export default function NewActivityView() {
                 </Select>
                 {groupSubjects.length === 1 && (
                   <p className="text-[10px] text-muted-foreground">
-                    Autoseleccionada (?nica materia).
+                    Autoseleccionada (única materia).
                   </p>
                 )}
               </div>
@@ -366,7 +366,7 @@ export default function NewActivityView() {
 
             {activePeriod && (
               <div className="text-xs text-muted-foreground bg-muted/40 rounded-md px-3 py-2">
-                Esta actividad se registrar? en el periodo activo del grupo:{" "}
+                Esta actividad se registrará en el periodo activo del grupo:{" "}
                 <strong className="text-foreground">{activePeriod.name}</strong>.
               </div>
             )}
@@ -385,7 +385,7 @@ export default function NewActivityView() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="maxScore">Puntuaci?n m?xima</Label>
+                <Label htmlFor="maxScore">Puntuación máxima</Label>
                 <Input
                   id="maxScore"
                   type="number"
@@ -398,10 +398,10 @@ export default function NewActivityView() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Descripci?n (opcional)</Label>
+              <Label htmlFor="description">Descripción (opcional)</Label>
               <Textarea
                 id="description"
-                placeholder="Instrucciones, criterios o material para la actividad?"
+                placeholder="Instrucciones, criterios o material para la actividad…"
                 rows={3}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
