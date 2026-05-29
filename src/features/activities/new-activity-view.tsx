@@ -32,6 +32,7 @@ import { ActivityType } from "@/types";
 import { cn } from "@/lib/utils";
 import { PageHeader } from "@/components/shared/page-header";
 import { Callout } from "@/components/shared/callout";
+import { groupDetailPath } from "@/lib/routes";
 
 const ACTIVITY_TYPES: Array<{
   value: ActivityType;
@@ -169,7 +170,7 @@ export default function NewActivityView() {
     });
     toast.success("Actividad creada", { description: name.trim() });
     setSubmitting(false);
-    router.push(`/grupos/${groupId}`);
+    router.push(groupDetailPath(groupId));
   };
 
   if (!activeYear) {

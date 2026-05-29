@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EmptyState } from "@/components/shared/empty-state";
 import { GradePill } from "@/components/shared/grade-pill";
+import { studentDetailPath } from "@/lib/routes";
 
 interface RiskStudent {
   id: string;
@@ -38,7 +39,7 @@ export function RiskStudentsPanel({ students }: { students: RiskStudent[] }) {
           students.map((s) => (
             <Link
               key={s.id}
-              href={`/alumnos/${s.id}`}
+              href={studentDetailPath(s.id)}
               className="flex items-center gap-3 rounded-lg px-2 py-2 -mx-2 hover:bg-accent/60 transition-colors"
             >
               <div className="flex-1 min-w-0">

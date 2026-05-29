@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { groupDetailPath } from "@/lib/routes";
 import { AlertCircle, ArrowRight, BookOpen, Users } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { GradePill } from "@/components/shared/grade-pill";
@@ -23,7 +24,7 @@ export function GroupCard({
   compact,
 }: GroupCardProps) {
   return (
-    <Link href={`/grupos/${group.id}`} className="group">
+    <Link href={groupDetailPath(group.id)} className="group">
       <Card
         className={cn(
           "relative overflow-hidden transition-all hover:shadow-md hover:-translate-y-0.5",

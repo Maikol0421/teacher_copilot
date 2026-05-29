@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { GradePill } from "@/components/shared/grade-pill";
 import { Group } from "@/types";
+import { groupDetailPath } from "@/lib/routes";
 
 interface GroupRowProps {
   group: Group;
@@ -13,7 +14,7 @@ interface GroupRowProps {
 export function GroupRow({ group, avg, studentsCount, subjectsCount }: GroupRowProps) {
   return (
     <Link
-      href={`/grupos/${group.id}`}
+      href={groupDetailPath(group.id)}
       className="grid grid-cols-12 gap-2 items-center px-4 py-3 border-b last:border-b-0 hover:bg-accent/40 transition-colors text-sm"
     >
       <div className="col-span-12 sm:col-span-5 flex items-center gap-3">

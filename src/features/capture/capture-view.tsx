@@ -28,6 +28,7 @@ import { QuickCaptureMobile } from "./quick-capture-mobile";
 import { EmptyState } from "@/components/shared/empty-state";
 import { Callout } from "@/components/shared/callout";
 import { formatDate } from "@/lib/utils";
+import { groupDetailPath } from "@/lib/routes";
 import { sortStudentsByLastName } from "@/lib/students";
 
 export default function CaptureView() {
@@ -324,7 +325,7 @@ export default function CaptureView() {
           description="Este grupo aún no tiene alumnos."
           action={
             <Button asChild>
-              <Link href={`/grupos/${groupId}`}>Ir al grupo</Link>
+              <Link href={groupDetailPath(groupId)}>Ir al grupo</Link>
             </Button>
           }
         />
@@ -346,7 +347,7 @@ export default function CaptureView() {
           action={
             subjectCriteria.length === 0 && (
               <Button asChild>
-                <Link href={`/grupos/${groupId}`}>Configurar criterios</Link>
+                <Link href={groupDetailPath(groupId)}>Configurar criterios</Link>
               </Button>
             )
           }

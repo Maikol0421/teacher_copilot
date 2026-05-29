@@ -27,6 +27,7 @@ import {
   selectGroups,
   selectStudents,
 } from "@/store/app-store";
+import { groupDetailPath, studentDetailPath } from "@/lib/routes";
 
 interface CommandPaletteProps {
   open: boolean;
@@ -86,7 +87,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
         <CommandSeparator />
         <CommandGroup heading="Grupos">
           {groups.slice(0, 6).map((g) => (
-            <CommandItem key={g.id} onSelect={() => go(`/grupos/${g.id}`)}>
+            <CommandItem key={g.id} onSelect={() => go(groupDetailPath(g.id))}>
               <GraduationCap style={{ color: g.color }} /> {g.name}
             </CommandItem>
           ))}
@@ -97,7 +98,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
           {students.slice(0, 6).map((s) => (
             <CommandItem
               key={s.id}
-              onSelect={() => go(`/alumnos/${s.id}`)}
+              onSelect={() => go(studentDetailPath(s.id))}
               value={`${s.fullName} ${s.studentCode}`}
             >
               <User /> {s.fullName}

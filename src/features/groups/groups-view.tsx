@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/select";
 import { useAppStore, selectActiveSchoolYear } from "@/store/app-store";
 import { calculateGroupAverage } from "@/lib/grades";
+import { groupDetailPath } from "@/lib/routes";
 import { GroupCard } from "./group-card";
 import { GroupRow } from "./group-row";
 import { PageHeader } from "@/components/shared/page-header";
@@ -105,7 +106,7 @@ export default function GroupsView() {
     });
     setDialogOpen(false);
     setName("");
-    router.push(`/grupos/${id}`);
+    router.push(groupDetailPath(id));
   };
 
   if (!activeYear) {

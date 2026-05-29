@@ -4,6 +4,7 @@ import { GradePill } from "@/components/shared/grade-pill";
 import { Student } from "@/types";
 import { getGradeStatus, gradeStatusLabels } from "@/lib/grades";
 import { cn } from "@/lib/utils";
+import { studentDetailPath } from "@/lib/routes";
 
 interface StudentCardProps {
   student: Student;
@@ -17,7 +18,7 @@ export function StudentCard({ student, avg, variant = "card" }: StudentCardProps
   if (variant === "row") {
     return (
       <Link
-        href={`/alumnos/${student.id}`}
+        href={studentDetailPath(student.id)}
         className="grid grid-cols-12 gap-2 items-center px-4 py-3 border-b last:border-b-0 hover:bg-accent/40 transition-colors text-sm"
       >
         <div className="col-span-6 sm:col-span-5 min-w-0">
@@ -42,7 +43,7 @@ export function StudentCard({ student, avg, variant = "card" }: StudentCardProps
   }
 
   return (
-    <Link href={`/alumnos/${student.id}`}>
+    <Link href={studentDetailPath(student.id)}>
       <div
         className={cn(
           "group flex items-center gap-3 rounded-xl border bg-card p-3 transition-all hover:shadow-md hover:-translate-y-0.5"

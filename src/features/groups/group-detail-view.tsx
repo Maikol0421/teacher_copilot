@@ -32,6 +32,7 @@ import { StatsTab } from "./stats-tab";
 import { GroupConfigTab } from "./group-config-tab";
 import { GradePill } from "@/components/shared/grade-pill";
 import { sortStudentsByLastName } from "@/lib/students";
+import { Loader2 } from "lucide-react";
 
 interface GroupDetailViewProps {
   groupId: string;
@@ -46,8 +47,18 @@ export default function GroupDetailView({ groupId }: GroupDetailViewProps) {
     criteria,
     activities,
     grades,
+    initialized,
   } = useAppStore();
   const group = groups.find((g) => g.id === groupId);
+
+  if (!initialized) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[40vh] gap-3 text-muted-foreground">
+        <Loader2 className="h-6 w-6 animate-spin" />
+        <p className="text-sm">Cargando grupo…</p>
+      </div>
+    );
+  }
 
   if (!group) notFound();
 

@@ -32,14 +32,24 @@ import {
 import { cn, formatDate } from "@/lib/utils";
 import { GradePill } from "@/components/shared/grade-pill";
 import { ActivityTypeBadge } from "@/features/activities/activity-type-badge";
+import { groupDetailPath } from "@/lib/routes";
 
 interface StudentProfileViewProps {
   studentId: string;
 }
 
 export default function StudentProfileView({ studentId }: StudentProfileViewProps) {
-  const { students, groups, subjects, criteria, activities, grades } = useAppStore();
+  const { students, groups, subjects, criteria, activities, grades, initialized } =
+    useAppStore();
   const student = students.find((s) => s.id === studentId);
+
+  if (!initialized) {
+    return (
+      <div className="flex items-center justify-center min-h-[40vh] text-sm text-muted-foreground">
+        Cargando alumno…
+      </div>
+    );
+  }
 
   if (!student) notFound();
 
@@ -101,7 +111,7 @@ export default function StudentProfileView({ studentId }: StudentProfileViewProp
   return (
     <div className="space-y-6">
       <Button variant="ghost" size="sm" asChild className="-ml-2 text-muted-foreground">
-        <Link href={group ? `/grupos/${group.id}` : "/grupos"}>
+        <Link href={group ? groupDetailPath(group.id) : "/grupos"}>
           <ArrowLeft className="h-4 w-4" /> Volver
         </Link>
       </Button>
@@ -126,7 +136,7 @@ export default function StudentProfileView({ studentId }: StudentProfileViewProp
                 <span>{student.studentCode}</span>
                 <span>·</span>
                 <Link
-                  href={group ? `/grupos/${group.id}` : "#"}
+                  href={group ? groupDetailPath(group.id) : "#"}
                   className="hover:text-foreground"
                 >
                   {group?.name}
